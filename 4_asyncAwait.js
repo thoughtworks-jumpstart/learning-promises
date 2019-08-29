@@ -25,32 +25,3 @@ const printTodo = async id => {
 
 printTodo(1);
 printTodo(4);
-
-const fastResolvePromise = new Promise((resolve, reject) => {
-  console.log("start fast timer");
-  setTimeout(() => {
-    resolve("foo");
-  }, 100);
-});
-
-const slowResolvePromise = new Promise((resolve, reject) => {
-  console.log("start slow timer");
-  setTimeout(() => {
-    resolve("foo");
-  }, 1000);
-});
-
-const fastResolveFunction = async () => {
-  console.log("in fast");
-  await fastResolvePromise;
-  console.log("fast");
-};
-
-const slowResolveFunction = async () => {
-  console.log("in slow");
-  await slowResolvePromise;
-  console.log("slow");
-};
-
-slowResolveFunction();
-fastResolveFunction();
