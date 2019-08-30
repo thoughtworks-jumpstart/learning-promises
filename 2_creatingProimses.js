@@ -1,7 +1,3 @@
-/**
- * MDN: The Promise object represents the eventual completion (or failure)
- *  of an asynchronous operation, and its resulting value.
- */
 const success = () => console.log("success");
 const fail = () => console.log("fail");
 
@@ -21,13 +17,15 @@ new Promise((resolve, reject) => {
   resolve();
 }).catch(e => console.log("error")); // error
 
-// if there is a .then, a error will result in a fail instead
+// if there is a possibility of an error being thrown
+// you can handle the error in the catch
 new Promise((resolve, reject) => {
   throw new Error();
   resolve();
 })
   .then(success, fail)
-  .catch(e => console.log("error")); // fail and not error
+  .catch(e => console.log("error here"))
+  .finally(() => console.log("happens no matter what")); // fail and not error
 
 // is possible to create a promise that resolves immediately.
 Promise.resolve().then(success, fail); // success
